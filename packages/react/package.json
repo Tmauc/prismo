@@ -1,0 +1,49 @@
+{
+  "name": "@prismojs/react",
+  "version": "1.0.0",
+  "description": "Holographic / foil card effect for React — CSS-only animations, no spring dependency",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./styles": "./dist/prismo.css"
+  },
+  "files": ["dist", "src/img"],
+  "scripts": {
+    "build": "tsup && cp -r src/img dist/img && cp src/prismo.css dist/prismo.css",
+    "dev": "tsup --watch",
+    "lint": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "react": "^19.0.0",
+    "tsup": "^8.1.0",
+    "typescript": "^5.4.5"
+  },
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "card",
+    "foil",
+    "holographic",
+    "prismo",
+    "pokemon",
+    "tcg",
+    "css",
+    "animation"
+  ],
+  "repository": {
+    "type": "git",
+    "directory": "packages/react"
+  }
+}

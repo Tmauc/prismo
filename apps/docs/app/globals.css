@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #030308;
+  --bg-surface: #0a0a14;
+  --bg-elevated: #111122;
+  --text: #e8e8f0;
+  --text-muted: #7a7a8e;
+  --text-dim: #4a4a5e;
+  --accent-cyan: #00d4ff;
+  --accent-magenta: #ff2d8a;
+  --accent-violet: #8b5cf6;
+  --accent-gold: #f5c542;
+  --accent-green: #22c55e;
+  --prismatic: linear-gradient(
+    135deg,
+    #ff2d8a 0%,
+    #f5c542 16%,
+    #22c55e 33%,
+    #00d4ff 50%,
+    #8b5cf6 66%,
+    #ff2d8a 83%,
+    #f5c542 100%
+  );
+  --font-display: 'Syne', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --font-body: 'Syne', system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--bg);
+}
+
+::selection {
+  background: rgba(139, 92, 246, 0.4);
+  color: #fff;
+}
+
+/* ─── Scrollbar ─────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.3);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(139, 92, 246, 0.5); }
+
+/* ─── Grain Overlay ─────────────────────────────────────────── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+}
+
+/* ─── Prismatic text utility ────────────────────────────────── */
+.text-prismatic > * {
+  background: var(--prismatic);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: prismatic-shift 4s ease infinite;
+}
+
+@keyframes prismatic-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* ─── Gallery cards responsive ──────────────────────────────── */
+.gallery-card-img {
+  width: 280px;
+  height: 390px;
+}
+@media (max-width: 768px) {
+  .gallery-card-img {
+    width: 200px;
+    height: 280px;
+  }
+}
+
+/* ─── Glow pulse ────────────────────────────────────────────── */
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+/* ─── Hero scroll indicator ─────────────────────────────────── */
+@keyframes float-down {
+  0%, 100% { transform: translateY(0); opacity: 0.6; }
+  50% { transform: translateY(10px); opacity: 1; }
+}
+
+/* ─── Horizontal shimmer ────────────────────────────────────── */
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
